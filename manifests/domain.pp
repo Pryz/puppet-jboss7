@@ -43,7 +43,7 @@ class jboss7::domain inherits jboss7 {
         require => Package['jbossas7'],
     }
 
-    include firewall
+    include myfirewall
 
     firewall { '100 jboss.management.http.port' :
           chain  => 'INPUT',

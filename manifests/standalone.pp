@@ -43,7 +43,7 @@ class jboss7::standalone inherits jboss7 {
                       File['standalone.conf'],],
     }
 
-    include firewall
+    include myfirewall
 
     firewall { '100 jboss.http.port' :
           chain  => 'INPUT',

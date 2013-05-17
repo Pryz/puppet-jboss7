@@ -25,7 +25,7 @@ class jboss7::host inherits jboss7 {
         require => Package['jbossas7'],
     }
 
-    include firewall
+    include myfirewall
 
     firewall { '100 jboss.http.port' :
           chain  => 'INPUT',
