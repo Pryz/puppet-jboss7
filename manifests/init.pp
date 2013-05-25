@@ -1,11 +1,10 @@
-class jboss7( $domain = '192.168.0.62', $up = hiera('jboss::up', true) ) {
+class jboss7( $up = hiera('jboss::up', true) ) {
 
     include 'java'
 
     yumrepo { 'jboss' :
-        #baseurl  =>
-        #  'http://www.kermit.fr/repo/rpm/el$releasever/$basearch/jboss/',
-        baseurl  => 'http://beaker/repos/el$releasever/noarch/jboss/',
+        baseurl  =>
+          'http://www.kermit.fr/repo/rpm/el$releasever/$basearch/jboss/',
         descr    => 'JBoss',
         enabled  => 1,
         gpgcheck => 0,
@@ -79,20 +78,6 @@ class jboss7( $domain = '192.168.0.62', $up = hiera('jboss::up', true) ) {
         group   => 'jboss',
         mode    => '0700',
         require => File[ '/opt/jboss-as' ],
-    }
-
-    include concat::setup
-
-    concat { '/opt/jboss-as/.ssh/authorized_keys' :
-        owner   => 'jboss',
-        group   => 'jboss',
-        mode    => '0600',
-    }
-
-    concat::fragment { 'lofickey4jboss' :
-        target => '/opt/jboss-as/.ssh/authorized_keys',
-        source => 'puppet:///modules/ssh/authorized_keys-lofic@beaker',
-        order  => 01,
     }
 
 }
