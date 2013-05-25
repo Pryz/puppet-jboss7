@@ -1,4 +1,4 @@
-class jboss::ssh {
+class jboss::ssh inherits jboss7 {
     include concat::setup
 
     concat { '/opt/jboss-as/.ssh/authorized_keys' :
