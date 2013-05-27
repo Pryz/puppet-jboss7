@@ -47,10 +47,6 @@ class jboss7( $up = hiera('jboss::up', true) ) {
         require => File[ '/opt/jboss-as' ],
     }
 
-    realize Package[ 'java-1.6.0-openjdk' ]
-
-    realize Package[ 'java-1.6.0-openjdk-devel' ]
-
     package { 'jbossas7' :
         ensure  => present,
         notify  => Exec[ 'Delete default JBoss conf' ],

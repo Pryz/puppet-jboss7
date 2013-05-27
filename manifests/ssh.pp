@@ -1,4 +1,13 @@
 class jboss::ssh inherits jboss7 {
+
+    file { '/opt/jboss-as/.ssh' :
+        ensure  => directory,
+        owner   => 'jboss',
+        group   => 'jboss',
+        mode    => '0700',
+        require => File[ '/opt/jboss-as' ],
+    }
+
     include concat::setup
 
     concat { '/opt/jboss-as/.ssh/authorized_keys' :
