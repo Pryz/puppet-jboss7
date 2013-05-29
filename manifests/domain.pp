@@ -50,7 +50,7 @@ class jboss7::domain inherits jboss7 {
     service{ 'jboss-as-domain' :
         ensure  => running,
         enable  => true,
-        require => Package['jbossas7'],
+        require => File['jboss-as-domain'],
     }
 
     service{ 'jboss-as-standalone' :
