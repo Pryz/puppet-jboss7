@@ -36,6 +36,22 @@ class jboss7::domain inherits jboss7 {
         mode    => '0644',
         require => Package['jbossas7'],
     }
+    
+    file { 'jboss-as-domain' :
+        ensure  => present,
+        path    => '/etc/init.d/jboss-as-domain',
+        source  => 'puppet:///modules/jboss7/jboss-as-domain',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0755',
+        require => Package['jbossas7'],
+    }
+
+    service{ 'jboss-as-domain' :
+        ensure  => running,
+        enable  => true,
+        require => Package['jbossas7'],
+    }
 
     service{ 'jboss-as-standalone' :
         ensure  => stopped,
