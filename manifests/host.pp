@@ -1,4 +1,4 @@
-class jboss7::host ( $domain = 'master' ) inherits jboss7 {
+class jboss7::host ( $domain = '192.168.0.62' ) inherits jboss7 {
 
     # Generate the password for server-identities in host.xml with :
     # echo -n thepasswd | base64
