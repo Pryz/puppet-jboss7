@@ -32,7 +32,7 @@ class jboss7::host ( $domain = '192.168.0.62' ) inherits jboss7 {
     service{ 'jboss-as-domain' :
         ensure  => running,
         enable  => true,
-        require => File['jboss-ad-domain'],
+        require => File['jboss-as-domain'],
     }
 
     service{ 'jboss-as-standalone' :
